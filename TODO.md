@@ -1,0 +1,19 @@
+- [ ] Deployment infrastructure
+  - [ ] DO Function from Go package
+  - [ ] Serve static website
+- [ ] Basic photo feed implementation
+  - [ ] API for GET/PATCH
+  - [ ] View and upload feed in web app
+- [ ] Static Website Implementation
+  - [ ] Overview
+  - [ ] Day Of
+  - [ ] Registry
+  - [ ] Accommodations
+  - [ ] Prettify photo Feed
+- [ ] RSVP -> Guest List Google Sheet
+- [ ] Bulk Download Operation
+- [ ] Digital Guest book
+  - [ ] Text Feed
+  - [ ] Voicemail feed
+  - [ ] Find vintage looking bluetooth phone
+- [ ] Wedding test run
