@@ -1,0 +1,4 @@
+environment:
+  - REGION: ${REGION}
+  - SPACES_KEY: ${SPACES_KEY}
+  - SPACE_SECRET: ${SPACES_SECRET}
