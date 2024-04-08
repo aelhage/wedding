@@ -8,6 +8,10 @@ spec:
         deploy_on_push: true
         repo: aelhage/wedding
       source_dir: /web
+      name: feed-ui
+      routes:
+        - path: /
+
   functions:
     - github:
         branch: main
@@ -15,6 +19,6 @@ spec:
         repo: aelhage/wedding
       name: feed-api
       routes:
-        - path: /
+        - path: /api
       source_dir: /
   name: feed
