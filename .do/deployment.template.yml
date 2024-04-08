@@ -2,6 +2,12 @@ spec:
   alerts:
     - rules: DEPLOYMENT_FAILED
     - rules: DOMAIN_FAILED
+  static_sites:
+    - github:
+        branch: main
+        deploy_on_push: true
+        repo: aelhage/wedding
+      source_dir: /web
   functions:
     - github:
         branch: main
@@ -11,10 +17,4 @@ spec:
       routes:
         - path: /
       source_dir: /
-  static_sites:
-    - github:
-        branch: main
-        deploy_on_push: true
-        repo: aelhage/wedding
-      source_dir: /web
   name: feed
