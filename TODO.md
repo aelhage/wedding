@@ -1,6 +1,4 @@
-- [ ] Deployment infrastructure
-  - [x] DO Function from Go package
-  - [ ] Serve static website
+- [x] Deployment infrastructure
 - [ ] Basic photo feed implementation
   - [ ] API for GET/PATCH
   - [ ] View and upload feed in web app
