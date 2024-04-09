@@ -3,3 +3,8 @@ environment:
   BUCKET: ${BUCKET}
   SPACES_KEY: ${SPACES_KEY}
   SPACE_SECRET: ${SPACES_SECRET}
+packages:
+  - name: feed
+    functions:
+      - name: api
+        runtime: go:1.20
