@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"time"
 
@@ -42,7 +43,7 @@ type Response struct {
 }
 
 var (
-	key, secret, bucket string
+	key, secret, bucket, region string
 )
 
 func init() {
@@ -56,6 +57,10 @@ func init() {
 	}
 	bucket = os.Getenv("BUCKET")
 	if bucket == "" {
+		panic("no bucket provided")
+	}
+	region = os.Getenv("REGION")
+	if region == "" {
 		panic("no bucket provided")
 	}
 }
@@ -74,8 +79,8 @@ func handleGet() Response {
 	// Configure blob storage.
 	config := &aws.Config{
 		Credentials: credentials.NewStaticCredentials(key, secret, ""),
-		Endpoint:    aws.String("us-east-1.digitaloceanspaces.com:443"),
-		Region:      aws.String("us-east-1"),
+		Endpoint:    aws.String(fmt.Sprintf("%s.digitaloceanspaces.com:443", region)),
+		Region:      aws.String("us-east-1"), // Must be us-east-1 for compatibility with Spaces.
 	}
 	sess, err := session.NewSession(config)
 	if err != nil {
