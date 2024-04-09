@@ -1,6 +1,16 @@
 package main
 
-import "context"
+import (
+	"context"
+	"os"
+	"time"
+
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/credentials"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/google/uuid"
+)
 
 type HTTPParameters struct {
 	Method string `json:"method"`
@@ -11,14 +21,43 @@ type WebEvent struct {
 	Parameters HTTPParameters `json:"http"`
 }
 
+type FeedItem struct {
+	Created     string `json:"created"`
+	DownloadURL string `json:"download"`
+}
+
+type FeedViewModel struct {
+	UploadURL string     `json:"upload_url"`
+	Items     []FeedItem `json:"items"`
+}
+
 type ResponseHeaders struct {
 	ContentType string `json:"Content-Type"`
 }
 
 type Response struct {
-	Body       string          `json:"body"`
+	Body       FeedViewModel   `json:"body"`
 	StatusCode string          `json:"statusCode"`
 	Headers    ResponseHeaders `json:"headers"`
+}
+
+var (
+	key, secret, bucket string
+)
+
+func init() {
+	key = os.Getenv("SPACES_KEY")
+	if key == "" {
+		panic("no key provided")
+	}
+	secret = os.Getenv("SPACES_SECRET")
+	if secret == "" {
+		panic("no secret provided")
+	}
+	bucket = os.Getenv("BUCKET")
+	if bucket == "" {
+		panic("no bucket provided")
+	}
 }
 
 func Main(ctx context.Context, evt WebEvent) Response {
@@ -32,14 +71,31 @@ func Main(ctx context.Context, evt WebEvent) Response {
 }
 
 func handleGet() Response {
-	// example 1x1 GIF
-	gif := "R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+	// Configure blob storage.
+	config := &aws.Config{
+		Credentials: credentials.NewStaticCredentials(key, secret, ""),
+		Endpoint:    aws.String("us-east-1.digitaloceanspaces.com:443"),
+		Region:      aws.String("us-east-1"),
+	}
+	sess, err := session.NewSession(config)
+	if err != nil {
+		return handleError()
+	}
+
+	// Sign the upload URL.
+	uploadURL, err := uploadURL(sess, bucket, uuid.NewString(), time.Hour)
+	if err != nil {
+		return handleError()
+	}
+
+	// Retrieve existing feed items.
+	// TODO
+
 	return Response{
-		Body:       gif,
-		StatusCode: "200",
-		Headers: ResponseHeaders{
-			ContentType: "image/gif",
+		Body: FeedViewModel{
+			UploadURL: uploadURL,
 		},
+		StatusCode: "200",
 	}
 }
 
@@ -51,4 +107,17 @@ func handleError() Response {
 	return Response{
 		StatusCode: "400",
 	}
+}
+
+func uploadURL(sess *session.Session, bucket string, filename string, duration time.Duration) (string, error) {
+	client := s3.New(sess)
+	req, _ := client.PutObjectRequest(&s3.PutObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(filename),
+	})
+	url, err := req.Presign(duration)
+	if err != nil {
+		return "", err
+	}
+	return url, nil
 }
