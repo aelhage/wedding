@@ -37,9 +37,10 @@ type ResponseHeaders struct {
 }
 
 type Response struct {
-	Body       FeedViewModel   `json:"body"`
 	StatusCode string          `json:"statusCode"`
 	Headers    ResponseHeaders `json:"headers"`
+	VM         *FeedViewModel  `json:"vm,omitempty"`
+	ErrMsg     *string         `json:"err,omitempty"`
 }
 
 var (
@@ -69,10 +70,8 @@ func Main(ctx context.Context, evt WebEvent) Response {
 	switch evt.Parameters.Method {
 	case "GET":
 		return handleGet()
-	case "POST":
-		return handlePost()
 	}
-	return handleError()
+	return handleError(fmt.Errorf("unexpected request method %q", evt.Parameters.Method))
 }
 
 func handleGet() Response {
@@ -84,33 +83,30 @@ func handleGet() Response {
 	}
 	sess, err := session.NewSession(config)
 	if err != nil {
-		return handleError()
+		return handleError(err)
 	}
 
 	// Sign the upload URL.
 	uploadURL, err := uploadURL(sess, bucket, uuid.NewString(), time.Hour)
 	if err != nil {
-		return handleError()
+		return handleError(err)
 	}
 
 	// Retrieve existing feed items.
 	// TODO
 
 	return Response{
-		Body: FeedViewModel{
+		StatusCode: "200",
+		VM: &FeedViewModel{
 			UploadURL: uploadURL,
 		},
-		StatusCode: "200",
 	}
 }
-
-func handlePost() Response {
-	return handleError()
-}
-
-func handleError() Response {
+func handleError(err error) Response {
+	errMsg := err.Error()
 	return Response{
 		StatusCode: "400",
+		ErrMsg:     &errMsg,
 	}
 }
 
