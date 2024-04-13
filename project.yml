@@ -2,7 +2,7 @@ environment:
   REGION: ${REGION}
   BUCKET: ${BUCKET}
   SPACES_KEY: ${SPACES_KEY}
-  SPACE_SECRET: ${SPACES_SECRET}
+  SPACES_SECRET: ${SPACES_SECRET}
 packages:
   - name: feed
     functions:

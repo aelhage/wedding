@@ -62,7 +62,7 @@ func init() {
 	}
 	region = os.Getenv("REGION")
 	if region == "" {
-		panic("no bucket provided")
+		panic("no region provided")
 	}
 }
 
@@ -102,6 +102,7 @@ func handleGet() Response {
 		},
 	}
 }
+
 func handleError(err error) Response {
 	errMsg := err.Error()
 	return Response{

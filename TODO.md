@@ -1,5 +1,6 @@
 - [x] Deployment infrastructure
 - [ ] Basic photo feed implementation
+  - [x] Debugging environment - get `doctl` functional locally
   - [ ] API for GET/PATCH
   - [ ] View and upload feed in web app
 - [ ] Static Website Implementation
