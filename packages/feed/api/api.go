@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
+	"net/http"
 	"os"
 	"time"
 
@@ -37,10 +39,9 @@ type ResponseHeaders struct {
 }
 
 type Response struct {
-	StatusCode string          `json:"statusCode"`
-	Headers    ResponseHeaders `json:"headers"`
-	VM         *FeedViewModel  `json:"vm,omitempty"`
-	ErrMsg     *string         `json:"err,omitempty"`
+	StatusCode *int             `json:"statusCode"`
+	Headers    *ResponseHeaders `json:"headers"`
+	Body       *FeedViewModel   `json:"body"`
 }
 
 var (
@@ -96,18 +97,17 @@ func handleGet() Response {
 	// TODO
 
 	return Response{
-		StatusCode: "200",
-		VM: &FeedViewModel{
+		Body: &FeedViewModel{
 			UploadURL: uploadURL,
 		},
 	}
 }
 
 func handleError(err error) Response {
-	errMsg := err.Error()
+	log.Println(err.Error())
+	statusCode := http.StatusBadRequest
 	return Response{
-		StatusCode: "400",
-		ErrMsg:     &errMsg,
+		StatusCode: &statusCode,
 	}
 }
 
