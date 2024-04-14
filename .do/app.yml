@@ -29,4 +29,6 @@ static_sites:
       deploy_on_push: true
       repo: aelhage/wedding
     name: wedding-ui
-    source_dir: /web
+    source_dir: /web/build
+    build_command: npm run build
+    environment_slug: node-js

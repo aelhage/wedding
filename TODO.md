@@ -4,6 +4,7 @@
   - [ ] API for GET/PATCH
   - [ ] View and upload feed in web app
 - [ ] Static Website Implementation
+  - [ ] Set up svelte kit app in DO App, deploy
   - [ ] Overview
   - [ ] Day Of
   - [ ] Registry
