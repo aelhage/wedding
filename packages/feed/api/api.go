@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"log"
 	"net/http"
@@ -34,14 +33,10 @@ type FeedViewModel struct {
 	Items     []FeedItem `json:"items"`
 }
 
-type ResponseHeaders struct {
-	ContentType string `json:"Content-Type"`
-}
-
 type Response struct {
-	StatusCode *int             `json:"statusCode"`
-	Headers    *ResponseHeaders `json:"headers"`
-	Body       *FeedViewModel   `json:"body"`
+	StatusCode *int               `json:"statusCode,omitempty"`
+	Headers    *map[string]string `json:"headers,omitempty"`
+	Body       *FeedViewModel     `json:"body,omitempty"`
 }
 
 var (
@@ -67,7 +62,7 @@ func init() {
 	}
 }
 
-func Main(ctx context.Context, evt WebEvent) Response {
+func Main(evt WebEvent) Response {
 	switch evt.Parameters.Method {
 	case "GET":
 		return handleGet()
