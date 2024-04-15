@@ -46,4 +46,4 @@ static_sites:
     envs:
       - key: PUBLIC_BASE_API_URL
         scope: BUILD_TIME
-        value: ${wedding-api.PUBLIC_URL}
+        value: ${wedding-api.PUBLIC_URL}/feed/viewmodel

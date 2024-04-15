@@ -6,6 +6,6 @@ environment:
 packages:
   - name: feed
     functions:
-      - name: api
+      - name: viewmodel
         runtime: go:1.20
         web: true
