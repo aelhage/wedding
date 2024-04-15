@@ -3,12 +3,22 @@ alerts:
 features:
   - buildpack-stack=ubuntu-22
 functions:
-  - github:
+  - name: wedding-api
+    github:
       branch: main
       deploy_on_push: true
       repo: aelhage/wedding
-    name: wedding-api
     source_dir: /
+    envs:
+      - key: REGION
+        scope: RUN_AND_BUILD_TIME
+      - key: BUCKET
+        scope: RUN_AND_BUILD_TIME
+      - key: SPACES_KEY
+        scope: RUN_AND_BUILD_TIME
+      - key: SPACES_SECRET
+        type: SECRET
+        scope: RUN_AND_BUILD_TIME
 ingress:
   rules:
     - component:
@@ -24,12 +34,16 @@ ingress:
 name: wedding-app
 region: nyc
 static_sites:
-  - github:
+  - name: wedding-ui
+    github:
       branch: main
       deploy_on_push: true
       repo: aelhage/wedding
-    name: wedding-ui
     source_dir: /web
     output_dir: /build
     build_command: npm run build
     environment_slug: node-js
+    envs:
+      - key: PUBLIC_BASE_API_URL
+        scope: BUILD_TIME
+        value: ${wedding-api.PUBLIC_URL}

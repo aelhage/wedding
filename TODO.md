@@ -4,12 +4,16 @@
   - [ ] API for GET/PATCH
   - [ ] View and upload feed in web app
 - [ ] Static Website Implementation
-  - [ ] Set up svelte kit app in DO App, deploy
-  - [ ] Overview
-  - [ ] Day Of
+  - [x] Set up svelte kit app in DO App, deploy
+  - [ ] Moments Photo Feed
+    - [x] Fetch feed VM in UI, set base URL in env vars
+    - [ ] Implement upload
+    - [ ] Image Carousel
+    - [ ] Image Gallery
+  - [ ] Home
+  - [ ] Schedule
   - [ ] Registry
-  - [ ] Accommodations
-  - [ ] Prettify photo Feed
+  - [ ] Travel
 - [ ] RSVP -> Guest List Google Sheet
 - [ ] Bulk Download Operation
 - [ ] Digital Guest book
