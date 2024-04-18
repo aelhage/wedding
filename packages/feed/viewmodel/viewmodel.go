@@ -23,14 +23,9 @@ type WebEvent struct {
 	Parameters HTTPParameters `json:"http"`
 }
 
-type FeedItem struct {
-	Created     string `json:"created"`
-	DownloadURL string `json:"download"`
-}
-
 type FeedViewModel struct {
-	UploadURL string     `json:"upload_url"`
-	Items     []FeedItem `json:"items"`
+	UploadURL    string   `json:"upload_url"`
+	DownloadURLs []string `json:"download_urls"`
 }
 
 type Response struct {
@@ -81,19 +76,38 @@ func handleGet() Response {
 	if err != nil {
 		return handleError(err)
 	}
+	client := s3.New(sess)
 
 	// Sign the upload URL.
-	uploadURL, err := uploadURL(sess, bucket, uuid.NewString(), time.Hour)
+	uploadURL, err := presignUploadURL(client, bucket, uuid.NewString(), time.Hour)
 	if err != nil {
 		return handleError(err)
 	}
 
 	// Retrieve existing feed items.
-	// TODO
+	downloadURLs := []string{}
+	out, err := client.ListObjects(&s3.ListObjectsInput{
+		Bucket: aws.String(bucket),
+	})
+	if err != nil {
+		handleError(err)
+	}
+	for _, obj := range out.Contents {
+		req, _ := client.GetObjectRequest(&s3.GetObjectInput{
+			Bucket: aws.String(bucket),
+			Key:    aws.String(*obj.Key)},
+		)
+		url, err := req.Presign(time.Hour)
+		if err != nil {
+			handleError(err)
+		}
+		downloadURLs = append(downloadURLs, url)
+	}
 
 	return Response{
 		Body: &FeedViewModel{
-			UploadURL: uploadURL,
+			UploadURL:    uploadURL,
+			DownloadURLs: downloadURLs,
 		},
 	}
 }
@@ -106,11 +120,10 @@ func handleError(err error) Response {
 	}
 }
 
-func uploadURL(sess *session.Session, bucket string, filename string, duration time.Duration) (string, error) {
-	client := s3.New(sess)
+func presignUploadURL(client *s3.S3, bucket string, key string, duration time.Duration) (string, error) {
 	req, _ := client.PutObjectRequest(&s3.PutObjectInput{
 		Bucket: aws.String(bucket),
-		Key:    aws.String(filename),
+		Key:    aws.String(key),
 	})
 	url, err := req.Presign(duration)
 	if err != nil {
