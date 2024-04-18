@@ -7,13 +7,14 @@
   - [x] Set up svelte kit app in DO App, deploy
   - [ ] Moments Photo Feed
     - [x] Fetch feed VM in UI, set base URL in env vars
-    - [ ] Implement upload
+    - [x] Implement upload
     - [ ] Image Carousel
     - [ ] Image Gallery
   - [ ] Home
   - [ ] Schedule
   - [ ] Registry
   - [ ] Travel
+- [ ] Set up domain
 - [ ] RSVP -> Guest List Google Sheet
 - [ ] Bulk Download Operation
 - [ ] Digital Guest book
