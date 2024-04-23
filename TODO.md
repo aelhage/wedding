@@ -1,22 +1,21 @@
 - [x] Deployment infrastructure
-- [ ] Basic photo feed implementation
-  - [x] Debugging environment - get `doctl` functional locally
-  - [ ] API for GET/PATCH
-  - [ ] View and upload feed in web app
+- [x] Basic photo feed implementation
 - [ ] Static Website Implementation
   - [x] Set up svelte kit app in DO App, deploy
   - [ ] Moments Photo Feed
     - [x] Fetch feed VM in UI, set base URL in env vars
     - [x] Implement upload
-    - [ ] Image Carousel
+    - [x] Image Carousel
     - [ ] Image Gallery
+    - [ ] Set up "Share to" embedded links
   - [ ] Home
   - [ ] Schedule
   - [ ] Registry
   - [ ] Travel
-- [ ] Set up domain
+- [x] Set up domain
 - [ ] RSVP -> Guest List Google Sheet
 - [ ] Bulk Download Operation
+- [ ] Prettify
 - [ ] Digital Guest book
   - [ ] Text Feed
   - [ ] Voicemail feed
