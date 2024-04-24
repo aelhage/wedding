@@ -4,7 +4,7 @@
 
   export let index: number;
   export let items: string[];
-  export let add: () => void;
+  export let close: () => void;
 
   $: hasNext = index + 1 < items?.length;
   $: hasPrev = index > 0;
@@ -17,34 +17,40 @@
   };
 </script>
 
-<div class="feed-header">
-  {index} of {items.length}
+<div class="feed-root">
+  <div class="feed-header">
+    {index} of {items.length}
+  </div>
+  <img class="feed-content" src={items[index]} alt="selected moment" />
+  <button
+    class="feed-nav feed-nav-prev {hasPrev ? '' : 'hidden'}"
+    type="button"
+    on:click={prev}
+  >
+    &lt;
+  </button>
+  <button
+    class="feed-nav feed-nav-next {hasNext ? '' : 'hidden'}"
+    type="button"
+    on:click={next}
+  >
+    &gt;
+  </button>
+  <button type="button" class="feed-close" on:click={close}> X </button>
+  <a class="feed-download" href={items[index]} download>
+    <img alt="save this moment" src={download} />
+  </a>
 </div>
-<img class="feed-content" src={items[index]} alt="selected moment" />
-<button
-  class="feed-nav feed-nav-prev {hasPrev ? '' : 'hidden'}"
-  type="button"
-  on:click={prev}
->
-  &lt;
-</button>
-<button
-  class="feed-nav feed-nav-next {hasNext ? '' : 'hidden'}"
-  type="button"
-  on:click={next}
->
-  &gt;
-</button>
-<button type="button" class="feed-upload" on:click={add}>
-  <img alt="share your moment" src={upload} />
-</button>
-<a class="feed-download" href={items[index]} download>
-  <img alt="save this moment" src={download} />
-</a>
 
 <style>
   .hidden {
     visibility: hidden;
+  }
+
+  .feed-root {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 25px 1fr 50px;
   }
 
   .feed-header {
@@ -68,17 +74,12 @@
     grid-row: 2;
   }
 
-  .feed-upload {
+  .feed-close {
     grid-column: 1;
     grid-row: 3;
     cursor: pointer;
     border: none;
     background: transparent;
-  }
-
-  .feed-upload img {
-    max-width: 50%;
-    max-height: 50%;
   }
 
   .feed-download img {

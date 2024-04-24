@@ -2,6 +2,7 @@
   import { PUBLIC_BASE_API_URL } from "$env/static/public";
   import upload from "$lib/assets/upload.svg";
   import Carousel from "./carousel.svelte";
+  import Gallery from "./gallery.svelte";
 
   // Data Loading
 
@@ -35,7 +36,7 @@
 
   // UI Management
 
-  let index = 0;
+  let index = -1;
   $: hasAnything = items?.length > 0;
 
   const add = () => {
@@ -54,7 +55,11 @@
       bind:files
     />
     {#if hasAnything}
-      <Carousel bind:index {items} {add} />
+      {#if index >= 0}
+        <Carousel bind:index {items} close={() => (index = -1)} />
+      {:else}
+        <Gallery {items} {add} select={(i) => (index = i)} />
+      {/if}
     {:else}
       <button type="button" class="moments-upload-first" on:click={add}>
         <img alt="share your moment" src={upload} />
@@ -66,12 +71,6 @@
 <style>
   .display-none {
     display: none !important;
-  }
-
-  .moments-root {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 25px 1fr 50px;
   }
 
   .moments-upload-first {
