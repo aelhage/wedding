@@ -2,17 +2,15 @@
   import cover from "$lib/assets/cover.jpg";
 </script>
 
-<div class="root">
-  <div class="cover-container">
-    <img class="cover-image" alt="" src={cover} />
-    <div class="cover-text">
-      <div class="cover-names">
-        <div>ALEX</div>
-        <div>&</div>
-        <div>LYNN</div>
-      </div>
-      <div class="cover-date">October 11th, 2024 | Buffalo, NY</div>
+<div class="cover-container">
+  <img class="cover-image" alt="" src={cover} />
+  <div class="cover-text">
+    <div class="cover-names">
+      <div>ALEX</div>
+      <div>&</div>
+      <div>LYNN</div>
     </div>
+    <div class="cover-date">October 11th, 2024 | Buffalo, NY</div>
   </div>
 </div>
 

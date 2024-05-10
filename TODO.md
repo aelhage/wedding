@@ -7,14 +7,12 @@
     - [x] Implement upload
     - [x] Image Carousel
     - [ ] Image Gallery
-      - [x] Make first item an `Add` button
-      - [x] Add a close button to the carousel
-      - [ ] responsive wrapping
-      - [ ] Thumbnails
     - [ ] Set up "Share to" embedded links
   - [ ] Home
+    - [ ] Fit to screen size
   - [ ] Schedule
   - [ ] Registry
+    - [ ] Add link
   - [ ] Travel
 - [x] Set up domain
 - [ ] RSVP -> Guest List Google Sheet

@@ -29,15 +29,15 @@
   }
 
   ul li {
-    flex: 0 1 240px;
+    height: 200px;
     position: relative;
     cursor: pointer;
   }
 
   ul li img {
     object-fit: cover;
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 100%;
     vertical-align: middle;
   }
 

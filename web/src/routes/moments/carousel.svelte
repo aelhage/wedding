@@ -21,7 +21,6 @@
   <div class="feed-header">
     {index} of {items.length}
   </div>
-  <img class="feed-content" src={items[index]} alt="selected moment" />
   <button
     class="feed-nav feed-nav-prev {hasPrev ? '' : 'hidden'}"
     type="button"
@@ -40,6 +39,7 @@
   <a class="feed-download" href={items[index]} download>
     <img alt="save this moment" src={download} />
   </a>
+  <img class="feed-content" src={items[index]} alt="selected moment" />
 </div>
 
 <style>
@@ -61,7 +61,6 @@
   .feed-nav {
     border: none;
     background: transparent;
-    z-index: 10;
   }
 
   .feed-nav-prev {

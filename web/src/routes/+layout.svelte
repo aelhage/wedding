@@ -45,10 +45,10 @@
   }
 
   .app-root {
-    width: 100%;
+    width: 100vw;
     max-width: 800px;
-    margin: 0 auto;
     text-align: center;
+    position: absolute;
   }
 
   .app-header {
