@@ -7,6 +7,7 @@
     - [x] Implement upload
     - [x] Image Carousel
     - [ ] Image Gallery
+      - [ ] Responsive row height
     - [ ] Set up "Share to" embedded links
   - [ ] Home
     - [ ] Fit to screen size

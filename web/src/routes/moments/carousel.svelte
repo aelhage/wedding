@@ -1,6 +1,8 @@
 <script lang="ts">
-  import download from "$lib/assets/download.svg";
-  import upload from "$lib/assets/upload.svg";
+  import downloadIcon from "$lib/assets/download.svg";
+  import closeIcon from "$lib/assets/close.svg";
+  import nextIcon from "$lib/assets/next.svg";
+  import prevIcon from "$lib/assets/previous.svg";
 
   export let index: number;
   export let items: string[];
@@ -17,29 +19,30 @@
   };
 </script>
 
-<div class="feed-root">
-  <div class="feed-header">
-    {index} of {items.length}
+<div class="carousel-root">
+  <img class="carousel-content" src={items[index]} alt="selected moment" />
+  <div class="carousel-controls">
+    <button
+      class="carousel-prev {hasPrev ? '' : 'hidden'}"
+      type="button"
+      on:click={prev}
+    >
+      <img alt="next" src={prevIcon} />
+    </button>
+    <button
+      class="carousel-next {hasNext ? '' : 'hidden'}"
+      type="button"
+      on:click={next}
+    >
+      <img alt="next" src={nextIcon} />
+    </button>
+    <button type="button" class="carousel-close" on:click={close}>
+      <img alt="close carousel" src={closeIcon} />
+    </button>
+    <a class="carousel-download" href={items[index]} download>
+      <img alt="save this moment" src={downloadIcon} />
+    </a>
   </div>
-  <button
-    class="feed-nav feed-nav-prev {hasPrev ? '' : 'hidden'}"
-    type="button"
-    on:click={prev}
-  >
-    &lt;
-  </button>
-  <button
-    class="feed-nav feed-nav-next {hasNext ? '' : 'hidden'}"
-    type="button"
-    on:click={next}
-  >
-    &gt;
-  </button>
-  <button type="button" class="feed-close" on:click={close}> X </button>
-  <a class="feed-download" href={items[index]} download>
-    <img alt="save this moment" src={download} />
-  </a>
-  <img class="feed-content" src={items[index]} alt="selected moment" />
 </div>
 
 <style>
@@ -47,51 +50,65 @@
     visibility: hidden;
   }
 
-  .feed-root {
+  .carousel-root {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: color-mix(in srgb, var(--sapphire) 75%, transparent);
+  }
+
+  .carousel-controls {
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 25px 1fr 50px;
+    grid-template-rows: 50px 1fr 50px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
   }
 
-  .feed-header {
-    grid-column: 1 / span 2;
-    grid-row: 1;
-  }
-
-  .feed-nav {
-    border: none;
-    background: transparent;
-  }
-
-  .feed-nav-prev {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .feed-nav-next {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  .feed-close {
-    grid-column: 1;
-    grid-row: 3;
+  .carousel-controls button {
+    color: var(--gold);
     cursor: pointer;
     border: none;
     background: transparent;
   }
 
-  .feed-download img {
-    max-width: 50%;
-    max-height: 50%;
+  .carousel-controls button img {
+    height: 24px;
   }
 
-  .feed-download {
+  .carousel-prev {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .carousel-next {
     grid-column: 2;
+    grid-row: 2;
+  }
+
+  .carousel-close {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+
+  .carousel-close img {
+    float: right;
+    margin: 8px;
+  }
+
+  .carousel-download {
+    grid-column: 1 / span 2;
     grid-row: 3;
   }
 
-  .feed-content {
+  .carousel-download img {
+    height: 24px;
+  }
+
+  .carousel-content {
     max-width: 100%;
     max-height: 100%;
     position: absolute;
