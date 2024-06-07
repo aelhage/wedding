@@ -52,6 +52,7 @@
       type="file"
       accept="image/*"
       class="display-none"
+      capture
       bind:files
     />
     {#if hasAnything}

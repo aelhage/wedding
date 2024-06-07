@@ -22,8 +22,9 @@
       >
     </nav>
   </div>
-
-  <slot />
+  <div class="app-content">
+    <slot />
+  </div>
 </div>
 
 <style>
@@ -39,7 +40,6 @@
     margin: auto;
     padding: 0;
     width: 100vh;
-    min-height: 100vh;
     color: var(--gold);
     background-color: var(--emerald);
   }
@@ -49,10 +49,15 @@
     max-width: 800px;
     text-align: center;
     position: absolute;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    row-gap: 16px;
+    margin: 16px;
   }
 
   .app-header {
-    margin: 16px;
+    grid-row: 1;
   }
 
   .app-header > nav {
@@ -62,6 +67,10 @@
 
   .app-header > nav > * {
     margin: 0 4px;
+  }
+
+  .app-content {
+    grid-row: 2;
   }
 
   a {

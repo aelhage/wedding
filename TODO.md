@@ -2,20 +2,27 @@
 - [x] Basic photo feed implementation
 - [ ] Static Website Implementation
   - [x] Set up svelte kit app in DO App, deploy
-  - [ ] Moments Photo Feed
-    - [x] Fetch feed VM in UI, set base URL in env vars
-    - [x] Implement upload
-    - [x] Image Carousel
-    - [ ] Image Gallery
-      - [ ] Responsive row height
-    - [ ] Set up "Share to" embedded links
+  - [x] Moments Photo Feed
   - [ ] Home
     - [ ] Fit to screen size
   - [ ] Schedule
   - [ ] Registry
-    - [ ] Add link
-  - [ ] Travel
+    - [ ] Add links
+  - [x] Travel
 - [x] Set up domain
+- [ ] Misc Style issues
+  - [ ] Carousel
+    - [ ] mobile
+      - [ ] input does not open capture image
+      - [ ] body extends beyond screen height. Should not be able to scroll.
+      - [ ] view height does not account for address bar. Download should show without scroll.
+- [ ] Monogram Design
+  - [ ] Fivr? AI? Etsy? What are people doing now?
+  - [ ] Contact potentials
+  - [ ] Variations
+    - [ ] Website graphics
+    - [ ] Stationary
+    - [ ] Woodcutting
 - [ ] RSVP -> Guest List Google Sheet
 - [ ] Bulk Download Operation
 - [ ] Prettify

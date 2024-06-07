@@ -29,7 +29,7 @@
   }
 
   ul li {
-    height: 200px;
+    height: 17vh;
     position: relative;
     cursor: pointer;
   }
