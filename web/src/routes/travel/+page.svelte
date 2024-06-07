@@ -3,7 +3,7 @@
   import richardson from "$lib/assets/richardson.jpg";
 </script>
 
-<div class="travel-root">
+<div>
   <div>
     <h2>The Richardson Hotel</h2>
 
