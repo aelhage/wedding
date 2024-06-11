@@ -6,8 +6,7 @@
   - [ ] Home
     - [ ] Fit to screen size
   - [ ] Schedule
-  - [ ] Registry
-    - [ ] Add links
+  - [x] Registry
   - [x] Travel
 - [x] Set up domain
 - [ ] Misc Style issues
@@ -23,9 +22,12 @@
     - [ ] Website graphics
     - [ ] Stationary
     - [ ] Woodcutting
-- [ ] RSVP -> Guest List Google Sheet
+- [x] RSVP -> Guest List Google Sheet
 - [ ] Bulk Download Operation
+- [ ] Enable Moments page
+  - [ ] Allow configuring a date to hide controls until
 - [ ] Prettify
+- [ ] Generate QR codes
 - [ ] Digital Guest book
   - [ ] Text Feed
   - [ ] Voicemail feed
