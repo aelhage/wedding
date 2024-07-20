@@ -2,16 +2,18 @@
   import upload from "$lib/assets/upload.svg";
 
   export let items: string[];
-  export let add: () => void;
+  export let add: (() => void) | undefined = undefined;
   export let select: (index: number) => void;
 </script>
 
 <ul>
-  <li>
-    <button type="button" class="moments-upload" on:click={add}>
-      <img alt="share your moment" src={upload} />
-    </button>
-  </li>
+  {#if add}
+    <li>
+      <button type="button" class="moments-upload" on:click={add}>
+        <img alt="share your moment" src={upload} />
+      </button>
+    </li>
+  {/if}
   {#each items as item, i}
     <li>
       <img src={item} alt="" on:click={() => select(i)} />

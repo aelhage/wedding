@@ -17,10 +17,9 @@
       <a href="/registry" class:active={$page.url.pathname === "/registry"}
         >Registry</a
       >
-      <!-- Hide until admin functionality is built -->
-      <!-- <a href="/moments" class:active={$page.url.pathname === "/moments"}
+      <a href="/moments" class:active={$page.url.pathname === "/moments"}
         >Moments</a
-      > -->
+      >
     </nav>
   </div>
   <div class="app-content">

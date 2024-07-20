@@ -1,33 +1,20 @@
-- [x] Deployment infrastructure
-- [x] Basic photo feed implementation
-- [ ] Static Website Implementation
-  - [x] Set up svelte kit app in DO App, deploy
-  - [x] Moments Photo Feed
+- [ ] Enable Moments page
+  - [x] Loading indicator
+  - [x] Allow configuring a date to hide controls until event
+  - [ ] Bulk Download Operation
+  - [ ] On mobile, allow upload not just capture
+- [ ] Prettify
   - [ ] Home
-    - [ ] Fit to screen size
-  - [ ] Schedule
-  - [x] Registry
-  - [x] Travel
-- [x] Set up domain
-- [ ] Misc Style issues
+  - [ ] Gallery
+    - [ ] Center loading spinner
   - [ ] Carousel
     - [ ] mobile
       - [ ] input does not open capture image
       - [ ] body extends beyond screen height. Should not be able to scroll.
       - [ ] view height does not account for address bar. Download should show without scroll.
-- [ ] Monogram Design
-  - [ ] Fivr? AI? Etsy? What are people doing now?
-  - [ ] Contact potentials
-  - [ ] Variations
-    - [ ] Website graphics
-    - [ ] Stationary
-    - [ ] Woodcutting
-- [x] RSVP -> Guest List Google Sheet
-- [ ] Bulk Download Operation
-- [ ] Enable Moments page
-  - [ ] Allow configuring a date to hide controls until
-- [ ] Prettify
 - [ ] Generate QR codes
+  - [x] Main page, invitations
+  - [ ] Photo share
 - [ ] Digital Guest book
   - [ ] Text Feed
   - [ ] Voicemail feed

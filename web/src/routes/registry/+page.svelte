@@ -1,12 +1,13 @@
 <script>
   import Buttonlink from "$lib/components/buttonlink.svelte";
-  import richardson from "$lib/assets/richardson.jpg";
 </script>
 
 <div>
-  We are so grateful to have you join us on our special day. Your presence is
-  the best gift we could ask for. If you would like to contribute to our
-  honeymoon fund, you can do so here
+  <p>
+    We are so grateful to have you join us on our special day. Your presence is
+    the best gift we could ask for. If you would like to contribute to our
+    honeymoon fund, you can do so here:
+  </p>
 
   <div>
     <Buttonlink
@@ -15,8 +16,10 @@
     />
   </div>
 
-  We have also registered at the following stores for those who prefer
-  traditional gifts:
+  <p>
+    We have also registered at the following stores for those who prefer
+    traditional gifts:
+  </p>
 
   <div>
     <Buttonlink
@@ -28,7 +31,8 @@
       href="https://www.target.com/gift-registry/gift-giver?registryId=92d309d0-169f-11ef-bfbe-09bc9319adab&type=WEDDING"
     />
   </div>
-  Thank you for your love and support!
+
+  <p>Thank you for your love and support!</p>
 </div>
 
 <style>
