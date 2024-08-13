@@ -7,9 +7,7 @@
     <span>A & L</span>
     <nav>
       <a href="/" class:active={$page.url.pathname === "/"}>Home</a>
-      <a href="/schedule" class:active={$page.url.pathname === "/schedule"}
-        >Schedule</a
-      >
+      <a href="/day" class:active={$page.url.pathname === "/day"}>Day Of</a>
       <a href="/travel" class:active={$page.url.pathname === "/travel"}
         >Travel</a
       >

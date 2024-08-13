@@ -3,8 +3,14 @@
   - [x] Allow configuring a date to hide controls until event
   - [ ] Bulk Download Operation
   - [ ] On mobile, allow upload not just capture
+- [x] Schedule page
+- [ ] Travel Page
+  - [ ] Things to Do
+- [ ] Add an FAQ page
 - [ ] Prettify
   - [ ] Home
+  - [ ] Schedule
+    - [ ] Fit images to parent container
   - [ ] Gallery
     - [ ] Center loading spinner
   - [ ] Carousel

@@ -9,8 +9,8 @@
 
     <img alt="" src={richardson} />
 
-    <h3>444 Forest Ave, Buffalo, NY 14213</h3>
-    <h3>(716) 493-2610</h3>
+    <address>444 Forest Ave Buffalo, NY 14213</address>
+    <address>(716) 493-2610</address>
   </div>
 
   <div>
