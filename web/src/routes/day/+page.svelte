@@ -5,7 +5,7 @@
   import trinity from "$lib/assets/trinity.png";
 </script>
 
-<div>
+<div class="root">
   <h1>Friday, October 11th, 2024</h1>
 
   <h2>Ceremony</h2>
@@ -42,11 +42,14 @@
     white-space: pre;
     display: inline-block;
   }
+  .root {
+    width: 100%;
+  }
   .icon {
     width: 24px;
     height: 24px;
   }
   .header {
-    max-width: 700px;
+    max-width: 100%;
   }
 </style>

@@ -36,10 +36,4 @@
 </div>
 
 <style>
-  img {
-    max-width: 100%;
-  }
-  li {
-    list-style-type: none;
-  }
 </style>

@@ -43,7 +43,7 @@
   }
 
   .app-root {
-    width: 100vw;
+    width: 90vw;
     max-width: 800px;
     text-align: center;
     position: absolute;

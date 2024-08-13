@@ -17,6 +17,7 @@
 <style>
   .cover-container {
     width: 100%;
+    position: relative;
   }
 
   .cover-image {

@@ -8,6 +8,7 @@
   - [ ] Things to Do
 - [ ] Add an FAQ page
 - [ ] Prettify
+  - [ ] Fit to mobile
   - [ ] Home
   - [ ] Schedule
     - [ ] Fit images to parent container
